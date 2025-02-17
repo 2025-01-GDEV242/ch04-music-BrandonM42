@@ -170,4 +170,35 @@ public class MusicOrganizer
             addTrack(track);
         }
     }
+    
+    public void randomSong()
+    {
+        int random;
+        
+        random = (int)(Math.random() * tracks.size());
+        
+        player.startPlaying(tracks.get(random).getFilename());
+    }
+    
+    public void randomPlayAll()
+    {
+        int randomInt;
+        ArrayList<Integer> playedSongs = new ArrayList();
+        
+        randomInt = (int)(Math.random() * tracks.size());
+        
+        while(playedSongs.size() < tracks.size())
+        {
+            if(playedSongs.contains(randomInt))
+            {
+                randomInt = (int)(Math.random() * tracks.size());
+            }
+            else
+            {
+                playedSongs.add(randomInt);
+                player.playSample(tracks.get(randomInt).getFilename());
+            }
+        }
+        //player.startPlaying(tracks.get(randomAll).getFilename());
+    }
 }
